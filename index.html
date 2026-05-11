@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トレーニング管理 | おしえてかめさん</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐢 トレーニング・ログ</h1>
+            <p>今日のメニューを選択して記録しましょう</p>
+        </header>
+
+        <main>
+            <div class="menu-grid">
+                <button class="menu-btn running" onclick="selectMenu('ランニング', '#3498db')">
+                    <span class="icon">🏃</span>
+                    <span>ランニング</span>
+                </button>
+                <button class="menu-btn workout" onclick="selectMenu('筋トレ', '#e67e22')">
+                    <span class="icon">🏋️</span>
+                    <span>筋トレ</span>
+                </button>
+                <button class="menu-btn rest" onclick="selectMenu('レストトレーニング', '#2ecc71')">
+                    <span class="icon">🧘</span>
+                    <span>レストトレーニング</span>
+                </button>
+            </div>
+
+            <div id="selection-detail" class="detail-card hidden">
+                <h3>選択中: <span id="selected-name"></span></h3>
+                <div class="input-group">
+                    <label for="memo">メモ・内容:</label>
+                    <textarea id="memo" placeholder="（例：LSD 90分、スクワット 3セットなど）"></textarea>
+                </div>
+                <button class="calendar-btn" onclick="addToCalendar()">Googleカレンダーに追加</button>
+            </div>
+        </main>
+
+    
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
