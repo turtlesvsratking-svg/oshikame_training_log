@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>トレーニング管理 | おしえてかめさん</title>
     
-    <!-- ホーム画面用アイコンの設定 -->
+    <!-- ホーム画面用アイコン設定 -->
     <link rel="apple-touch-icon" href="IMG_4231.png">
     <link rel="icon" type="image/png" href="IMG_4231.png">
-    <!-- Android/Chrome用 -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="トレ管理">
 
@@ -19,30 +18,30 @@
     <div class="container">
         <header>
             <h1>🐢 トレーニング・ログ</h1>
-            <p>今日のメニューを選択して記録しましょう</p>
+            <p>今日のメニューをカレンダーに記録</p>
         </header>
 
         <main>
             <div class="menu-grid">
                 <button class="menu-btn running" onclick="selectMenu('ランニング', '#3498db')">
                     <span class="icon">🏃</span>
-                    <span>ランニング</span>
+                    <span class="label">ランニング</span>
                 </button>
                 <button class="menu-btn workout" onclick="selectMenu('筋トレ', '#e67e22')">
                     <span class="icon">🏋️</span>
-                    <span>筋トレ</span>
+                    <span class="label">筋トレ</span>
                 </button>
-                <button class="menu-btn rest" onclick="selectMenu('レスト', '#2ecc71')">
+                <button class="menu-btn rest" onclick="selectMenu('レストトレーニング', '#2ecc71')">
                     <span class="icon">🧘</span>
-                    <span>レスト</span>
+                    <span class="label">レストトレーニング</span>
                 </button>
             </div>
 
             <div id="selection-detail" class="detail-card hidden">
                 <h3>選択中: <span id="selected-name"></span></h3>
                 <div class="input-group">
-                    <label for="memo">メモ・内容:</label>
-                    <textarea id="memo" placeholder="（例：LSD 90分、スクワット 3セットなど）"></textarea>
+                    <label for="memo">内容・振り返り:</label>
+                    <textarea id="memo" placeholder="（例：LSD 60分、ストレッチ、動的休息など）"></textarea>
                 </div>
                 <button class="calendar-btn" onclick="addToCalendar()">Googleカレンダーに追加</button>
             </div>
