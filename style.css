@@ -34,15 +34,15 @@ h1 {
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 20px;
 }
 
 .menu-btn {
     background: var(--card-bg);
-    border: 2px solid transparent;
-    border-radius: 16px;
-    padding: 15px 5px;
+    border: 3px solid transparent;
+    border-radius: 18px;
+    padding: 20px 5px;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     transition: all 0.2s ease;
@@ -51,9 +51,14 @@ h1 {
     align-items: center;
 }
 
+/* 各ボタンの枠線にアクセントカラー */
+.menu-btn.workout { border-color: #e74c3c; }
+.menu-btn.running { border-color: #f1c40f; }
+.menu-btn.rest { border-color: #3498db; }
+
 .menu-btn:active {
     transform: scale(0.95);
-    background-color: #eee;
+    opacity: 0.8;
 }
 
 .menu-btn .icon {
@@ -71,7 +76,8 @@ h1 {
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    margin-top: 10px;
+    border-top: 8px solid var(--primary-color); /* 選択色に連動 */
+    transition: border-color 0.3s ease;
 }
 
 .hidden { display: none; }
@@ -99,6 +105,7 @@ textarea {
     font-weight: bold;
     margin-top: 20px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 footer {
