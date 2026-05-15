@@ -18,32 +18,35 @@
     <div class="container">
         <header>
             <h1>🐢 トレーニング・ログ</h1>
-            <p>今日のメニューをカレンダーに記録</p>
+            <p>種別を選んでカレンダーに記録</p>
         </header>
 
         <main>
             <div class="menu-grid">
-                <button class="menu-btn running" onclick="selectMenu('ランニング', '#3498db')">
-                    <span class="icon">🏃</span>
-                    <span class="label">ランニング</span>
-                </button>
-                <button class="menu-btn workout" onclick="selectMenu('筋トレ', '#e67e22')">
+                <!-- 筋トレ：赤 (#e74c3c) -->
+                <button class="menu-btn workout" onclick="selectMenu('筋トレ', '#e74c3c', '🔴')">
                     <span class="icon">🏋️</span>
                     <span class="label">筋トレ</span>
                 </button>
-                <button class="menu-btn rest" onclick="selectMenu('レストトレーニング', '#2ecc71')">
+                <!-- ランニング：黄 (#f1c40f) -->
+                <button class="menu-btn running" onclick="selectMenu('ランニング', '#f1c40f', '🟡')">
+                    <span class="icon">🏃</span>
+                    <span class="label">ランニング</span>
+                </button>
+                <!-- レストトレーニング：青 (#3498db) -->
+                <button class="menu-btn rest" onclick="selectMenu('レストトレーニング', '#3498db', '🔵')">
                     <span class="icon">🧘</span>
-                    <span class="label">レストトレーニング</span>
+                    <span class="label">レストトレ</span>
                 </button>
             </div>
 
             <div id="selection-detail" class="detail-card hidden">
-                <h3>選択中: <span id="selected-name"></span></h3>
+                <h3 id="detail-header">選択中: <span id="selected-name"></span></h3>
                 <div class="input-group">
                     <label for="memo">内容・振り返り:</label>
-                    <textarea id="memo" placeholder="（例：LSD 60分、ストレッチ、動的休息など）"></textarea>
+                    <textarea id="memo" placeholder="（例：スクワット、LSD 10km、動的休息など）"></textarea>
                 </div>
-                <button class="calendar-btn" onclick="addToCalendar()">Googleカレンダーに追加</button>
+                <button id="submit-btn" class="calendar-btn" onclick="addToCalendar()">Googleカレンダーに追加</button>
             </div>
         </main>
 
