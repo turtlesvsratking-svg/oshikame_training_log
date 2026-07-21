@@ -38,13 +38,18 @@
                     <span class="icon">🧘</span>
                     <span class="label">レストトレ</span>
                 </button>
+                <!-- 縄跳び：緑 (#2ecc71) -->
+                <button class="menu-btn jumprope" onclick="selectMenu('縄跳び', '#2ecc71', '🟢')">
+                    <span class="icon">🪢</span>
+                    <span class="label">縄跳び</span>
+                </button>
             </div>
 
             <div id="selection-detail" class="detail-card hidden">
                 <h3 id="detail-header">選択中: <span id="selected-name"></span></h3>
                 <div class="input-group">
                     <label for="memo">内容・振り返り:</label>
-                    <textarea id="memo" placeholder="（例：スクワット、LSD 10km、動的休息など）"></textarea>
+                    <textarea id="memo" placeholder="（例：二重跳び 100回×3セット、LSD 60分、ストレッチなど）"></textarea>
                 </div>
                 <button id="submit-btn" class="calendar-btn" onclick="addToCalendar()">Googleカレンダーに追加</button>
             </div>
