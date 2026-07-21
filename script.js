@@ -13,10 +13,10 @@ function selectMenu(name, color, emoji) {
     const nameDisplay = document.getElementById('selected-name');
     const submitBtn = document.getElementById('submit-btn');
     
-    // UIの更新
+    // UIの動的更新
     nameDisplay.innerText = name;
-    detailCard.style.borderColor = color; // カードの上の線を色に連動
-    submitBtn.style.backgroundColor = color; // ボタンの色を連動
+    detailCard.style.borderColor = color;
+    submitBtn.style.backgroundColor = color;
     
     detailCard.classList.remove('hidden');
     detailCard.scrollIntoView({ behavior: 'smooth' });
@@ -25,10 +25,10 @@ function selectMenu(name, color, emoji) {
 function addToCalendar() {
     const memo = document.getElementById('memo').value;
     
-    // タイトルの先頭に色別の絵文字を付与して視認性をアップ
+    // タイトルの先頭に識別用の色絵文字を付与
     const title = `${currentSelection.emoji}${currentSelection.name}`;
     
-    // 日付取得 (日本時間/JST固定)
+    // 日本時間（JST）の日付取得
     const now = new Date();
     const y = now.getFullYear();
     const m = ("0" + (now.getMonth() + 1)).slice(-2);
