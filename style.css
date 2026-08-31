@@ -31,7 +31,7 @@ h1 {
     margin-bottom: 5px;
 }
 
-/* 4項目に対応する2×2の柔軟なグリッド */
+/* 6項目に対応する2列グリッド */
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -52,11 +52,13 @@ h1 {
     align-items: center;
 }
 
-/* 各メニューの枠線アクセントカラー */
+/* 種別ごとのアクセント枠線 */
 .menu-btn.workout { border-color: #e74c3c; }
 .menu-btn.running { border-color: #f1c40f; }
 .menu-btn.rest { border-color: #3498db; }
 .menu-btn.jumprope { border-color: #2ecc71; }
+.menu-btn.prisoner { border-color: #9b59b6; }
+.menu-btn.stretch { border-color: #e67e22; }
 
 .menu-btn:active {
     transform: scale(0.95);
