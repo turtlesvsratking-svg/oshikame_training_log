@@ -25,10 +25,10 @@ function selectMenu(name, color, emoji) {
 function addToCalendar() {
     const memo = document.getElementById('memo').value;
     
-    // タイトルの先頭に識別用の色絵文字を付与
+    // タイトルの先頭に識別用の色絵文字を付与（【トレ】等のプレフィックスは無し）
     const title = `${currentSelection.emoji}${currentSelection.name}`;
     
-    // 日本時間（JST）の日付取得
+    // 日本時間（JST）の日付取得（UTCによる1日ズレを防止）
     const now = new Date();
     const y = now.getFullYear();
     const m = ("0" + (now.getMonth() + 1)).slice(-2);
