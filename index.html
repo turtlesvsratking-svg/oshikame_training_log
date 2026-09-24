@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>トレーニング管理 | おしえてかめさん</title>
     
-    <!-- ホーム画面用アイコン設定 -->
     <link rel="apple-touch-icon" href="IMG_4231.png">
     <link rel="icon" type="image/png" href="IMG_4231.png">
     <meta name="mobile-web-app-capable" content="yes">
@@ -23,48 +22,46 @@
 
         <main>
             <div class="menu-grid">
-                <!-- 筋トレ：赤 (#e74c3c) -->
-                <button class="menu-btn workout" onclick="selectMenu('筋トレ', '#e74c3c', '🔴')">
+                <button type="button" class="menu-btn workout" onclick="selectMenu('筋トレ', '#e74c3c', '🔴')">
                     <span class="icon">🏋️</span>
                     <span class="label">筋トレ</span>
                 </button>
-                <!-- ランニング：黄 (#f1c40f) -->
-                <button class="menu-btn running" onclick="selectMenu('ランニング', '#f1c40f', '🟡')">
+                <button type="button" class="menu-btn running" onclick="selectMenu('ランニング', '#f1c40f', '🟡')">
                     <span class="icon">🏃</span>
                     <span class="label">ランニング</span>
                 </button>
-                <!-- レストトレーニング：青 (#3498db) -->
-                <button class="menu-btn rest" onclick="selectMenu('レストトレーニング', '#3498db', '🔵')">
+                <button type="button" class="menu-btn rest" onclick="selectMenu('レストトレーニング', '#3498db', '🔵')">
                     <span class="icon">🧘</span>
                     <span class="label">レストトレ</span>
                 </button>
-                <!-- 縄跳び：緑 (#2ecc71) -->
-                <button class="menu-btn jumprope" onclick="selectMenu('縄跳び', '#2ecc71', '🟢')">
+                <button type="button" class="menu-btn jumprope" onclick="selectMenu('縄跳び', '#2ecc71', '🟢')">
                     <span class="icon">🪢</span>
                     <span class="label">縄跳び</span>
                 </button>
-                <!-- プリズナートレーニング：紫 (#9b59b6) -->
-                <button class="menu-btn prisoner" onclick="selectMenu('プリズナートレーニング', '#9b59b6', '🟣')">
+                <button type="button" class="menu-btn prisoner" onclick="selectMenu('プリズナートレーニング', '#9b59b6', '🟣')">
                     <span class="icon">🧱</span>
                     <span class="label">プリズナー</span>
                 </button>
-                <!-- ストレッチ：オレンジ (#e67e22) -->
-                <button class="menu-btn stretch" onclick="selectMenu('ストレッチ', '#e67e22', '🟠')">
+                <button type="button" class="menu-btn stretch" onclick="selectMenu('ストレッチ', '#e67e22', '🟠')">
                     <span class="icon">🙆‍♂️</span>
                     <span class="label">ストレッチ</span>
                 </button>
             </div>
 
             <div id="selection-detail" class="detail-card hidden">
-                <h3 id="detail-header">選択中: <span id="selected-name"></span></h3>
+                <h3 id="detail-header">選択中: <span id="selected-name">未選択</span></h3>
                 <div class="input-group">
                     <label for="memo">内容・振り返り:</label>
-                    <textarea id="memo" placeholder="（例：プッシュアップ Step 5、LSD 10km、静的ストレッチ15分など）"></textarea>
+                    <textarea id="memo" placeholder="（例：プッシュアップ Step 5、LSD 10kmなど）"></textarea>
                 </div>
                 
-                <!-- ポップアップブロック回避のためaタグ（直接リンク）に変更 -->
-                <a id="submit-btn" class="calendar-btn" href="#" target="_blank" onclick="prepareCalendarUrl(event)">Googleカレンダーに追加</a>
+                <button type="button" id="submit-btn" class="calendar-btn" onclick="openCalendar()">
+                    Googleカレンダーに追加
+                </button>
             </div>
+
+            <!-- エラーデバッグ用表示領域 -->
+            <div id="status-msg" style="margin-top: 15px; color: #d9534f; font-weight: bold; text-align: center;"></div>
         </main>
 
         <footer>
