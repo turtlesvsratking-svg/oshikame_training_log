@@ -5,39 +5,42 @@ let currentSelection = {
 };
 
 function selectMenu(name, color, emoji) {
-    currentSelection.name = name;
-    currentSelection.color = color;
-    currentSelection.emoji = emoji;
-    
-    const detailCard = document.getElementById('selection-detail');
-    const nameDisplay = document.getElementById('selected-name');
-    const submitBtn = document.getElementById('submit-btn');
-    
-    // UIの動的更新
-    if (nameDisplay) nameDisplay.innerText = name;
-    if (detailCard) {
-        detailCard.style.borderColor = color;
-        detailCard.classList.remove('hidden');
-        detailCard.scrollIntoView({ behavior: 'smooth' });
+    try {
+        currentSelection.name = name;
+        currentSelection.color = color;
+        currentSelection.emoji = emoji;
+        
+        const detailCard = document.getElementById('selection-detail');
+        const nameDisplay = document.getElementById('selected-name');
+        const submitBtn = document.getElementById('submit-btn');
+        
+        if (nameDisplay) nameDisplay.innerText = name;
+        if (detailCard) {
+            detailCard.style.borderColor = color;
+            detailCard.classList.remove('hidden');
+            detailCard.scrollIntoView({ behavior: 'smooth' });
+        }
+        if (submitBtn) submitBtn.style.backgroundColor = color;
+    } catch (err) {
+        alert("メニュー選択エラー: " + err.message);
     }
-    if (submitBtn) submitBtn.style.backgroundColor = color;
 }
 
-function addToCalendar() {
+function prepareCalendarUrl(event) {
     try {
-        const memoInput = document.getElementById('memo');
-        const memo = memoInput ? memoInput.value : '';
-        
-        // メニューが選択されていない場合の安全対策
         if (!currentSelection.name) {
             alert('トレーニングメニューを選択してください。');
+            event.preventDefault();
             return;
         }
 
-        // タイトルの先頭に色絵文字を付与
+        const memoInput = document.getElementById('memo');
+        const memo = memoInput ? memoInput.value : '';
+
+        // タイトル設定（【トレ】なし、絵文字＋メニュー名）
         const title = `${currentSelection.emoji}${currentSelection.name}`;
         
-        // 日本時間（JST）の日付取得
+        // 日本時間の日付（YYYYMMDD）
         const now = new Date();
         const y = now.getFullYear();
         const m = ("0" + (now.getMonth() + 1)).slice(-2);
@@ -50,12 +53,12 @@ function addToCalendar() {
         const details = encodeURIComponent(memo);
         const calendarUrl = `${baseUrl}&text=${text}&details=${details}&dates=${dates}`;
         
-        // 【修正ポイント】
-        // window.open(..., '_blank') はポップアップブロックで拒否されやすいため、
-        // 画面遷移（location.href）に変更して確実にカレンダーを開くようにします。
-        window.location.href = calendarUrl;
+        // ボタン(aタグ)のリンク先を動的に書き換える
+        const submitBtn = document.getElementById('submit-btn');
+        submitBtn.href = calendarUrl;
 
-    } catch (error) {
-        alert('エラーが発生しました: ' + error.message);
+    } catch (err) {
+        alert("カレンダーURL作成エラー: " + err.message);
+        event.preventDefault();
     }
 }
