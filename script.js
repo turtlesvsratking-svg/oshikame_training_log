@@ -29,7 +29,7 @@ function selectMenu(name, color, emoji) {
         }
         if (submitBtn) submitBtn.style.backgroundColor = color;
 
-        logMsg(""); // エラー表示をクリア
+        logMsg("");
     } catch (err) {
         logMsg("選択エラー: " + err.message);
     }
@@ -48,19 +48,28 @@ function openCalendar() {
         // タイトル作成（色絵文字 + 種目名）
         const title = currentSelection.emoji + currentSelection.name;
         
-        // 日付生成（YYYYMMDD）
-        const now = new Date();
-        const y = now.getFullYear();
-        const m = String(now.getMonth() + 1).padStart(2, '0');
-        const d = String(now.getDate()).padStart(2, '0');
-        const dateStr = y + m + d;
-        const dates = dateStr + "/" + dateStr;
+        // 【修正ポイント】終日イベントの場合、終了日は「翌日」にする必要があります
+        const startDate = new Date(); // 今日
+        const endDate = new Date();
+        endDate.setDate(startDate.getDate() + 1); // 明日
+
+        // YYYYMMDD フォーマット関数
+        const formatDate = (date) => {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}${m}${d}`;
+        };
+
+        const startStr = formatDate(startDate);
+        const endStr = formatDate(endDate);
+        const dates = `${startStr}/${endStr}`;
 
         // URL構築
         const baseUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
         const textParam = encodeURIComponent(title);
         const detailsParam = encodeURIComponent(memo);
-        const calendarUrl = baseUrl + "&text=" + textParam + "&details=" + detailsParam + "&dates=" + dates;
+        const calendarUrl = `${baseUrl}&text=${textParam}&details=${detailsParam}&dates=${dates}`;
 
         // 画面遷移
         window.location.href = calendarUrl;
