@@ -61,7 +61,9 @@
                     <label for="memo">内容・振り返り:</label>
                     <textarea id="memo" placeholder="（例：プッシュアップ Step 5、LSD 10km、静的ストレッチ15分など）"></textarea>
                 </div>
-                <button id="submit-btn" class="calendar-btn" onclick="addToCalendar()">Googleカレンダーに追加</button>
+                
+                <!-- ポップアップブロック回避のためaタグ（直接リンク）に変更 -->
+                <a id="submit-btn" class="calendar-btn" href="#" target="_blank" onclick="prepareCalendarUrl(event)">Googleカレンダーに追加</a>
             </div>
         </main>
 
